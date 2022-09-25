@@ -36,7 +36,6 @@
 
     </div>
 
-    
 </body>
 
 <script>
@@ -89,30 +88,13 @@ document.body.appendChild(container);
 
    const postId = Object.keys(data.posts_by_date);
 
-
-  // console.log(postValue[0].published_at)
-  // console.log(postValue[0].status)
-  // console.log(postValue[0].entry.type)
-  // console.log(postValue[0].entry.message)
-  // console.log(postValue[0].entry.image[0])
-  // console.log(postValue[0].entry.video)
-  // console.log(postValue[0].updated_at)
-  // console.log(postValue[0].created_at)
-  // console.log(postValue[0].link)
-  // console.log(postValue[0].account.name)
-  // console.log(postValue[0].account.username)
-  // console.log(postValue[0].account.image)
-  // console.log(postValue[0].account.link)
-  // console.log(postValue[0].account.channel)
-
-
   for(var i=postId.length-1; i>=0; i--)
   {
     const postValue = Object.values(data.posts_by_date)[i];
  
     var elemDiv = document.createElement('div');
     elemDiv.style.cssText = 'width:1100px;height:450px;margin:0px 280px;padding:10px;text-align:center;';
-    //border-style:outset;border-width:1px;border-color:#7d7c7c;';
+  
     elemDiv.className = "posts-box";
     document.body.appendChild(elemDiv);
 
