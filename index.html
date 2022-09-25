@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <div class="brand-left">
+        <img src=images/brand-image.PNG class="brand"/>
+        <img src=images/brand-image.PNG class="brand"/>
+        <img src=images/brand-image.PNG class="brand"/>
+        <img src=images/brand-image.PNG class="brand"/>
+        <img src=images/brand-image.PNG class="brand"/>
+    </div>
+
+    <div class="navbar">
+        <button class="accordion" href="#notifications">NOTIFICATIONS</button>
+        <div class="panel"><ul><li><a href=''>Notifications</a></li></ul></div>
+        <button class="accordion" href="#summary">SUMMARY</button>
+        <div class="panel"><ul><li><a href=''>Summary</a></li></ul></div>
+        <button class="accordion" href="#publish">PUBLISH</button>
+        <div class="panel">
+        <ul>
+            <li><a href=''>Compose</a></li>
+            <li><a href=''>Feed</a></li>
+        </ul>  
+        </div>
+        <button class="accordion" href="#engage">ENGAGE</button>
+        <div class="panel"><ul><li><a href=''>Engage</a></li></ul></div>
+        <button class="accordion" href="#listen">LISTEN</button>
+        <div class="panel"><ul><li><a href=''>Listen</a></li></ul></div>
+        <button class="accordion" href="#report">REPORT</button>
+        <div class="panel"><ul><li><a href=''>Report</a></li></ul></div>
+
+    </div>
+
+    
+</body>
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+
+var colorList = {Published: 'grey', Scheduled: 'green', Approval: 'orange', Error:'red', Notes:'blue'};
+
+var container = document.createElement("div");
+container.style.cssText = 'margin-left: 280px; align-items: center;width:500px; padding: 20px;';
+colorize = function(colorList) {
+  
+    for (var key in colorList) {
+        var boxContainer = document.createElement("div");
+        
+        var box = document.createElement("div");
+        box.style.cssText = 'float: left; margin-left: 15px; display: inline-block; height: 9px; width: 9px;border-radius: 5px;';
+        var label = document.createElement("span");
+        label.style.cssText = 'float: left; margin-left: 10px;';
+
+        label.innerHTML = key;
+        box.style.backgroundColor = colorList[key];
+
+        boxContainer.appendChild(box);
+        boxContainer.appendChild(label);
+
+        container.appendChild(boxContainer);
+
+   }
+}
+
+colorize(colorList);
+document.body.appendChild(container);
+
+  fetch("data.json")
+  .then(response => response.json())
+  .then(data => {
+
+   const postId = Object.keys(data.posts_by_date);
+
+
+  // console.log(postValue[0].published_at)
+  // console.log(postValue[0].status)
+  // console.log(postValue[0].entry.type)
+  // console.log(postValue[0].entry.message)
+  // console.log(postValue[0].entry.image[0])
+  // console.log(postValue[0].entry.video)
+  // console.log(postValue[0].updated_at)
+  // console.log(postValue[0].created_at)
+  // console.log(postValue[0].link)
+  // console.log(postValue[0].account.name)
+  // console.log(postValue[0].account.username)
+  // console.log(postValue[0].account.image)
+  // console.log(postValue[0].account.link)
+  // console.log(postValue[0].account.channel)
+
+
+  for(var i=postId.length-1; i>=0; i--)
+  {
+    const postValue = Object.values(data.posts_by_date)[i];
+ 
+    var elemDiv = document.createElement('div');
+    elemDiv.style.cssText = 'width:1100px;height:450px;margin:0px 280px;padding:10px;text-align:center;';
+    //border-style:outset;border-width:1px;border-color:#7d7c7c;';
+    elemDiv.className = "posts-box";
+    document.body.appendChild(elemDiv);
+
+    const pDate = document.createElement("p");
+    const text = document.createTextNode(postId[i]);
+    pDate.style.cssText = 'text-align:left;color:grey;font-size:18px;';
+    pDate.appendChild(text);
+
+    elemDiv.appendChild(pDate);
+    
+        for(var j=0; j<postValue.length; j++)
+          {
+   
+            var postDivLeft = document.createElement('div');
+            postDivLeft.style.cssText = 'width: 30px; height: 400px; margin:10px -10px 0px -5px;padding:5px; float: left;';
+            postDivLeft.id = "statusColor";
+            elemDiv.appendChild(postDivLeft);
+
+            var color;
+            switch(postValue[0].status) {
+            case 0:
+              color = "orange";
+              break;
+            case 1:
+              color = '#5E9B5F';
+              break;
+            case 3:
+              color = '#878787';
+              break;
+            case 3:
+              color = "red";
+              break;
+                    }
+
+            postDivLeft.style.backgroundColor = color;
+      
+            var postDiv = document.createElement('div');
+            postDiv.style.cssText = 'width: 290px;height: 400px;margin:10px;padding:5px;background-color: whitesmoke;border: #444;float: left;';
+            elemDiv.appendChild(postDiv);
+
+            const pDate2 = document.createElement("p");
+            const text2 = document.createTextNode(postValue[j].published_at);
+            pDate2.style.cssText = 'text-align:left;color:grey;font-size:16px;';
+            pDate2.appendChild(text2);
+            postDiv.appendChild(pDate2);
+          
+            const message1 = document.createElement("p");
+            const text3 = document.createTextNode(postValue[j].entry.message);
+            message1.style.cssText = 'text-align:left;color:grey;font-size:16px;font-weight: 600px;font-family:Calibri;';
+            message1.appendChild(text3);
+            postDiv.appendChild(message1);
+          
+           var image1 = document.createElement("img");
+           image1.style.cssText = 'width: 200px';
+           var text4 = document.createTextNode(postValue[j].entry.image[0]);
+           image1.src = text4.textContent;
+           
+          //-----no-image photo//-----
+          if (!image1.complete) {
+            image1.src = "images/no-post-image.png";
+            image1.style.cssText = 'width:290px';
+          }
+          
+          postDiv.appendChild(image1);
+
+   }
+  }
+})
+</script>
+</html>

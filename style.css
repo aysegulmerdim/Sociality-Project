@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    background-color: rgb(228, 228, 228);
+  }
+
+ div.navbar {
+    list-style-type: none;
+    margin-left:50px;
+    margin-top: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #474747;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+
+  div.brand-left{
+    margin: 0;
+    width: 50px;
+    background-color: #3f3f3f;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    display: block;
+    color: #000;
+    padding: 4px 8px;
+  }
+
+ /* button.brand{
+    background-color: #3f3f3f;
+    color: white;
+    cursor: pointer;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+ } */
+
+ img.brand{
+  background-color: #3f3f3f;
+  cursor: pointer;
+  padding: 5px;
+  width: 30px;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+  border-radius: 10px;
+}
+
+  
+  .accordion {
+    background-color: #474747;
+    color: white;
+    cursor: pointer;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: rgb(247, 86, 86); 
+  }
+
+  .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color:#474747;
+    overflow: hidden;
+    color: white;
+  }
+
+  li a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  /* div.box{
+      width: 300px;
+      height: 400px;
+      margin: 10px;
+      background-color: whitesmoke;
+      border: #444;
+      float: left;
+  } */
+
+  /* img.post{
+    width: 200px;
+  } */
+
+  /* .post-status{
+    width: 30px;
+    height: 400px;
+    background-color: green;
+    float: left;
+  } */
+
+  /* .posts-box {
+    width: 80%;
+    height: auto;
+    margin-left: 0px;
+    padding: 20px;
+    text-align: center;
+    border-style: outset;
+    border-width: 1px;
+    border-color: #7d7c7c;
+    float: left;
+  
+  } */
+
+  /* .box {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 2px solid;
+    
+  } */
